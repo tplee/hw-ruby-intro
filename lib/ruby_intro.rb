@@ -3,15 +3,39 @@
 # Part 1
 
 def sum arr
-  return 0
+  n = 0
+  arr.each do |x| n += x end
+  return n
 end
 
 def max_2_sum arr
-  # YOUR CODE HERE
+  if arr.empty? == true
+    return 0
+  end
+  if arr.length == 1
+    return arr[0]
+  end
+    arr.sort!
+    n = arr.length
+    n = arr[n-1] + arr[n-2]
+    return n
 end
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+  # check array size
+  return false if arr.length <= 1
+   
+  # now check to see if any two elements sun to n
+  test = false
+  arr.each do 
+      |x| arr.each do
+           |y| 
+           if x != y and x + y == n
+               test = true
+           end
+       end
+   end
+   return test
 end
 
 # Part 2
