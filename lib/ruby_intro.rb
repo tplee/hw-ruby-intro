@@ -27,15 +27,14 @@ def sum_to_n? arr, n
    
   # now check to see if any two elements sun to n
   test = false
-  arr.each do 
-      |x| arr.each do
-           |y| 
-           if x != y and x + y == n
-               test = true
-           end
-       end
-   end
-   return test
+  arr.each do |x| 
+    arr.each do |y| 
+      if x != y and x + y == n
+        test = true
+      end
+    end
+  end
+  return test
 end
 
 # Part 2
@@ -49,11 +48,26 @@ def starts_with_consonant? s
 end
 
 def binary_multiple_of_4? s
-  /^0+$|^[01]*1[01]*00$/ === s
+  /^0+$|^[01]*00$/ === s
+  # ^0+$ catches the '0' case
+  # ^[01]*00$ cathes anything containing '0|1' provided it ends in '00'
 end
 
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  attr_accessor :isbn, :price
+  
+  def initialize isbn, price
+    # check the args
+    raise ArgumentError if isbn.empty? || price <= 0
+   
+    @isbn = isbn
+    @price = price
+  end
+  
+  def price_as_string
+    sprintf "$%.2f", @price
+    # uses 'C'-like format specifier; can't think of 'Ruby' way to do this
+  end
 end
